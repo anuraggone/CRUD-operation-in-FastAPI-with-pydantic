@@ -25,7 +25,7 @@ Data is stored in **patients.json** file
 - **FastAPI**
 - **Pydantic**
 - **JSON**
-read requirement.txt for more info
+checkout main.py for more info
 
 Basic **commands**
 to run file 
