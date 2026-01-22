@@ -97,7 +97,7 @@ def create_patient(patient :Patient):
         raise HTTPException(status_code=400, detail="Patient already exists")    
     
     # this is adding the details of new user into a data dictionary but value is everything except id and then 
-    # we storing that data with respect to id as the key for that data
+    # we  are storing that data with respect to id as the key for that data
     # model_dump convert a pydantic object into a dict so we used that but excluded the id
     
     data[patient.id] = patient.model_dump(exclude=["id"])
@@ -106,15 +106,7 @@ def create_patient(patient :Patient):
     
     return JSONResponse(status_Code = 201 , content={"messege":'patient created succesfully'})
 
-# this code is not relavent for specific parameter update
-# @app.post("/update")
-# def update_patient(patient:Patient):
-#     data = load_data()
-#     for id in data:
-#         if patient.id == id:
-#             data[id] = patient.model_dump(exclude =["id"])
-#             save_data(data)
-#     return JSONResponse(status_Code = 201 , content={"messege":'patient updated!'})
+
 
 class PatientUpdate(BaseModel):
     id : Annotated[Optional[str], Field(default = None)]
@@ -156,6 +148,8 @@ def delete_patient(patient_id = str):
     del data[patient_id]
     save_data(data)
     return JSONResponse(status_code= 201,content={"message":"patient deleted successfully"})
+
+# I will be uploading new project about how we can use FastAPI to create APIs for a ML model
             
         
     
